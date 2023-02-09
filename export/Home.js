@@ -59,12 +59,15 @@ var HomeComponent = function (_a) {
                     case 0: return [4 /*yield*/, onGetData()];
                     case 1:
                         data = _a.sent();
+                        console.log('data', data);
                         setTodos(data);
                         return [2 /*return*/];
                 }
             });
-        }); });
-    }, [onGetData]);
+        }); })();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+    console.log('todos', todos);
     // render
     return (<react_native_1.View style={styles.container}>
       <react_native_1.Text style={styles.title}>{title}</react_native_1.Text>
