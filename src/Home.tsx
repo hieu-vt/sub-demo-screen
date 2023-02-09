@@ -1,16 +1,57 @@
-import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {
+  ActivityIndicator,
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 
+interface TodoItem {
+  completed: boolean;
+  id: number;
+  title: string;
+  userId: number;
+}
 interface Props {
   title: string;
   subtitle?: string;
+
+  onGetData: () => Promise<Array<TodoItem>>;
 }
 
-const HomeComponent: React.FC<Props> = ({title, subtitle}) => {
+const HomeComponent: React.FC<Props> = ({title, subtitle, onGetData}) => {
+  // state
+  const [todos, setTodos] = useState<Array<TodoItem>>([]);
+
+  // func
+  const renderItem = ({item}: {item: TodoItem}) => {
+    return (
+      <View>
+        <Text>Todo: {item.title}</Text>
+        <Text>Completed: {item.completed}</Text>
+      </View>
+    );
+  };
+
+  // effect
+  useEffect(() => {
+    async () => {
+      const data = await onGetData();
+
+      setTodos(data);
+    };
+  }, [onGetData]);
+
+  // render
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
       {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
+
+      <View style={styles.space} />
+      {todos.length <= 0 && <ActivityIndicator size={'large'} />}
+      <FlatList data={todos} renderItem={renderItem} />
     </View>
   );
 };
@@ -26,6 +67,12 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 14,
     color: 'gray',
+  },
+  space: {
+    flex: 1,
+    height: 5,
+    width: '100%',
+    backgroundColor: 'black',
   },
 });
 
