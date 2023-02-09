@@ -8,7 +8,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "update": "tsc src/Home.tsx --outDir ./export --skipLibCheck --jsx react --esModuleInterop true"
+    "update": "tsc src/Home.tsx --outDir ./export --skipLibCheck --jsx react --esModuleInterop true --target es6 --module commonjs --strict true"
   },
   "dependencies": {
     "react": "18.0.0",

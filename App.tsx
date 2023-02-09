@@ -3,19 +3,20 @@ import {SafeAreaView} from 'react-native';
 import Home from './src/Home';
 
 const App = () => {
+  const onGetToDo = async () => {
+    const data = await (
+      await fetch('https://jsonplaceholder.typicode.com/todos')
+    ).json();
+
+    return data;
+  };
+
   return (
     <SafeAreaView>
       <Home
         title="VU THANH HIEU"
         subtitle="Novus-fintech"
-        onGetData={async () => [
-          {
-            completed: true,
-            id: 1,
-            title: 'Title',
-            userId: 2,
-          },
-        ]}
+        onGetData={onGetToDo}
       />
     </SafeAreaView>
   );

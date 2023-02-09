@@ -43,8 +43,6 @@ const HomeComponent: React.FC<Props> = ({title, subtitle, onGetData}) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log('todos', todos);
-
   // render
   return (
     <View style={styles.container}>
