@@ -1,4 +1,27 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -36,7 +59,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var react_1 = require("react");
+var react_1 = __importStar(require("react"));
 var react_native_1 = require("react-native");
 var HomeComponent = function (_a) {
     var title = _a.title, subtitle = _a.subtitle, onGetData = _a.onGetData;
@@ -45,10 +68,13 @@ var HomeComponent = function (_a) {
     // func
     var renderItem = function (_a) {
         var item = _a.item;
-        return (<react_native_1.View>
-        <react_native_1.Text>Todo: {item.title}</react_native_1.Text>
-        <react_native_1.Text>Completed: {item.completed}</react_native_1.Text>
-      </react_native_1.View>);
+        return (react_1["default"].createElement(react_native_1.View, null,
+            react_1["default"].createElement(react_native_1.Text, null,
+                "Todo: ",
+                item.title),
+            react_1["default"].createElement(react_native_1.Text, null,
+                "Completed: ",
+                item.completed)));
     };
     // effect
     (0, react_1.useEffect)(function () {
@@ -59,7 +85,6 @@ var HomeComponent = function (_a) {
                     case 0: return [4 /*yield*/, onGetData()];
                     case 1:
                         data = _a.sent();
-                        console.log('data', data);
                         setTodos(data);
                         return [2 /*return*/];
                 }
@@ -69,14 +94,12 @@ var HomeComponent = function (_a) {
     }, []);
     console.log('todos', todos);
     // render
-    return (<react_native_1.View style={styles.container}>
-      <react_native_1.Text style={styles.title}>{title}</react_native_1.Text>
-      {subtitle && <react_native_1.Text style={styles.subtitle}>{subtitle}</react_native_1.Text>}
-
-      <react_native_1.View style={styles.space}/>
-      {todos.length <= 0 && <react_native_1.ActivityIndicator size={'large'}/>}
-      <react_native_1.FlatList data={todos} renderItem={renderItem}/>
-    </react_native_1.View>);
+    return (react_1["default"].createElement(react_native_1.View, { style: styles.container },
+        react_1["default"].createElement(react_native_1.Text, { style: styles.title }, title),
+        subtitle && react_1["default"].createElement(react_native_1.Text, { style: styles.subtitle }, subtitle),
+        react_1["default"].createElement(react_native_1.View, { style: styles.space }),
+        todos.length <= 0 && react_1["default"].createElement(react_native_1.ActivityIndicator, { size: 'large' }),
+        react_1["default"].createElement(react_native_1.FlatList, { data: todos, renderItem: renderItem })));
 };
 var styles = react_native_1.StyleSheet.create({
     container: {

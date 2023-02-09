@@ -38,7 +38,6 @@ const HomeComponent: React.FC<Props> = ({title, subtitle, onGetData}) => {
   useEffect(() => {
     (async () => {
       const data = await onGetData();
-      console.log('data', data);
       setTodos(data);
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps

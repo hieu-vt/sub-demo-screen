@@ -2,7 +2,7 @@
 {
   "extends": "@tsconfig/react-native/tsconfig.json",     /* Recommended React Native TSConfig base */
   "compilerOptions": {
-    "outDir": "./dist",
+    "outDir": "./export",
     "module": "commonjs",
     "target": "es6",
     "jsx": "react",
